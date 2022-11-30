@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="angular.min.js"></script>
+    <script src="ng.js"></script>
+    <style>
+        td, th {
+            border:1px solid red;
+        }
+        
+    </style>
+</head>
+<body ng-app="hastane" ng-controller="müşteriler">
+    <table>
+        <tr>
+            <th>sıra no {{guncellenecekkullaniciid}}</th>
+            <th>TC</th>
+            <th>Ad Soyad</th>
+            <th>Tel</th>
+            <th>Cinsiyet</th>
+            <th>İşlemler</th>
+        </tr>
+    
+    <tr ng-repeat=" x in kullanicilar">
+    <td>{{$index+1}}</td>
+    <td>{{x.tc}}</td>
+    <td>{{x.adsoyad}}</td>
+    <td>{{x.tel}}</td>
+    <td style="color:
+    {{x.cinsiyet == 'E' ? 'blue' : 'pink'}}">
+    {{x.cinsiyet}}</td>
+    <td>
+        <button ng-click="kullanicisil($index)">Sil</button>
+        <button ng-click="guncellemeverilerinidoldur(x)">Güncelle</button>
+    </td>
+       
+       </tr> 
+   </table>
+
+   TC: <input type ="text" ng-model="tc" /> <br/>
+   ad soyad: <input type ="text" ng-model="ad soyad" /> <br/>
+   tel: <input type ="text" ng-model="tel" /> <br/>
+   cinsiyet: <input type ="text" ng-model="cinsiyet" /> <br/>
+<button ng-show="guncellenecekkullaniciid == -1" ng-click="kullaniciekle(tc,adsoyad,tel,cinsiyet)">Ekle</button>
+<button ng-show="guncellenecekkullaniciid != -1" ng-click="kullaniciguncelle(tc,adsoyad,tel,cinsiyet)">Değişikliği kaydet</button>
+<button ng-show="guncellenecekkullaniciid != -1" ng-click="guncellemeiptal(tc,adsoyad,tel,cinsiyet)">iptal</button>
+
+
+</body> 
+</html>
+
+
+
+
+
